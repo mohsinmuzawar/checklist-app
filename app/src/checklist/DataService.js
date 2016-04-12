@@ -1,8 +1,8 @@
 (function(){
   'use strict';
 
-  angular.module('tasks')
-         .service('taskService', ['$q', TaskService]);
+  angular.module('checklist')
+         .service('dataService', ['$q', DataService]);
 
   /**
    * Users DataService
@@ -12,7 +12,7 @@
    * @returns {{loadAll: Function}}
    * @constructor
    */
-  function TaskService($q){
+  function DataService($q){
     var users = [
       {
         name: 'Lia Lugo',

@@ -1,10 +1,10 @@
 (function(){
 
   angular
-       .module('tasks')
-       .controller('TaskController', [
-          'taskService', '$mdSidenav', '$mdBottomSheet', '$log', '$q','$mdDialog','$mdToast',
-          TaskController
+       .module('checklist')
+       .controller('CheckListController', [
+          'dataService', '$mdSidenav', '$mdBottomSheet', '$log', '$q','$mdDialog','$mdToast',
+          CheckListController
        ]);
 
   /**
@@ -14,7 +14,7 @@
    * @param avatarsService
    * @constructor
    */
-  function TaskController( taskService, $mdSidenav, $mdBottomSheet, $log,$q ,$mdDialog,$mdToast) {
+  function CheckListController( dataService, $mdSidenav, $mdBottomSheet, $log,$q ,$mdDialog,$mdToast) {
     var self = this;
 
     self.selectedTask     = null;
@@ -28,14 +28,14 @@
     self.myStyle = {};
     // Load all registered tasks--
 
-    taskService
+    dataService
           .loadAllTasks()
           .then( function( tasks ) {
             self.tasks    = [].concat(tasks);
             self.selectedTask = tasks[0];
           });
     
-    taskService.loadAllUsers().then(function(users) {
+    dataService.loadAllUsers().then(function(users) {
         self.users = [].concat(users);
         self.selectedUser = users[0];
     });

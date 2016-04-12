@@ -24,11 +24,11 @@
 
   </head>
 
-  <body ng-app="checklistApp" layout="row" ng-controller="CheckListController as ul" ng-cloak >
+  <body ng-app="checklistApp" layout="row" ng-controller="CheckListController as ctrl" ng-cloak >
 
   <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
       md-component-id="left"
-      ng-click="ul.toggleList()" aria-label="Show Task List"
+      ng-click="ctrl.toggleList()" aria-label="Show Task List"
       md-is-locked-open="$mdMedia('gt-sm')">
 
     <md-toolbar class="md-whiteframe-z1">
@@ -36,8 +36,8 @@
     </md-toolbar>
 
     <md-list>
-      <md-list-item ng-repeat="user in ul.users">
-          <md-button ng-click="ul.selectUser(userit)" ng-class="{'selected' : user === ul.selected }">
+      <md-list-item ng-repeat="user in ctrl.users">
+          <md-button ng-click="ctrl.selectUser(userit)" ng-class="{'selected' : user === ctrl.selected }">
             <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
             {{user.name}}
           </md-button>
@@ -50,7 +50,7 @@
   <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 
     <md-toolbar layout="row" class="md-whiteframe-z1">
-      <md-button id="main" class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
+      <md-button id="main" class="menu" hide-gt-sm ng-click="ctrl.toggleList()" aria-label="Show User List">
         <md-icon md-svg-icon="menu" ></md-icon>
       </md-button>
       <h3>Task List</h3>
@@ -58,14 +58,14 @@
 
     <md-content flex id="content">
         <div flex ng-cloak layout layout-wrap >
-             <md-card ng-repeat="task in ul.tasks" flex="30" class="fade">
+             <md-card ng-repeat="task in ctrl.tasks" flex="30" class="fade">
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">{{task.name}}</span>
                         <span class="md-subhead">{{task.text}}</span>
                     </md-card-title-text>
                     <md-card-title-media layout="row" layout-align="center center">
-                        <div class="fa fa-check check-icon" aria-hidden="true"  ng-click="ul.openFromLeft( task)"></div>
+                        <div class="fa fa-check check-icon" aria-hidden="true"  ng-click="ctrl.openFromLeft( task)"></div>
                     </md-card-title-media>
                 </md-card-title>
             </md-card>

@@ -25,7 +25,7 @@
     self.selectUser   = selectUser;
     self.toggleList   = toggleTasksList;
     self.openFromLeft = openFromLeft;
-
+    self.myStyle = {};
     // Load all registered tasks--
 
     taskService
@@ -67,8 +67,10 @@
      */
     
     function openFromLeft(task) {
+        task.isCompleted = true;
         var index = self.tasks.indexOf(task);
         console.log(self.tasks);
+        self.myStyle={'background-color':'green'};
         var x =self.tasks.splice(index, 1); 
         $mdToast.show(
             $mdToast.simple()

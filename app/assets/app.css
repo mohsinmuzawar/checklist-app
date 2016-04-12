@@ -126,9 +126,11 @@ span.name {
 }
 
 .fade.ng-leave {
+    background-color: #689F38; 
   opacity: 1;
 }
 
 .fade.ng-leave.ng-leave-active {
+    background-color: #689F38; 
   opacity: 0;
 }

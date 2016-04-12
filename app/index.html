@@ -24,7 +24,7 @@
 
   </head>
 
-  <body ng-app="starterApp" layout="row" ng-controller="TaskController as ul" ng-cloak >
+  <body ng-app="checklistApp" layout="row" ng-controller="TaskController as ul" ng-cloak >
 
   <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
       md-component-id="left"
@@ -87,7 +87,7 @@
     <script type="text/javascript">
 
           angular
-              .module('starterApp', ['ngMaterial', 'tasks'])
+              .module('checklistApp', ['ngMaterial', 'tasks'])
               .config(function($mdThemingProvider, $mdIconProvider){
 
                   $mdIconProvider

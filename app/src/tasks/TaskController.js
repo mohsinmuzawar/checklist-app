@@ -3,7 +3,7 @@
   angular
        .module('tasks')
        .controller('TaskController', [
-          'taskService', '$mdSidenav', '$mdBottomSheet', '$log', '$q','$mdDialog',
+          'taskService', '$mdSidenav', '$mdBottomSheet', '$log', '$q','$mdDialog','$mdToast',
           TaskController
        ]);
 
@@ -14,7 +14,7 @@
    * @param avatarsService
    * @constructor
    */
-  function TaskController( taskService, $mdSidenav, $mdBottomSheet, $log,$q ,$mdDialog) {
+  function TaskController( taskService, $mdSidenav, $mdBottomSheet, $log,$q ,$mdDialog,$mdToast) {
     var self = this;
 
     self.selectedTask     = null;
@@ -66,20 +66,17 @@
      * Show the Contact view in the bottom sheet
      */
     
-    function openFromLeft() {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .clickOutsideToClose(true)
-        .title('Opening from the left')
-        .textContent('Closing to the right!')
-        .ariaLabel('Left to right demo')
-        .ok('Nice!')
-        // You can specify either sting with query selector
-        .openFrom('#left')
-        // or an element
-        .closeTo(angular.element(document.querySelector('#right')))
-    );
-  };
+    function openFromLeft(task) {
+        var index = self.tasks.indexOf(task);
+        console.log(self.tasks);
+        var x =self.tasks.splice(index, 1); 
+        $mdToast.show(
+            $mdToast.simple()
+                .textContent(task.name+ ' Completed!')
+                .position("bottom right" )
+                .hideDelay(3000)
+            );
+    }
   }
 
 })();

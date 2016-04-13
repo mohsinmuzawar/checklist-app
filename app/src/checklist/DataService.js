@@ -18,6 +18,7 @@
         name: 'George Best',
         avatar: 'svg-1',
         image : 'best.jpg',
+        team : "Machester United",
        tasks : [
             {
             name: 'Task 1',
@@ -45,6 +46,7 @@
         name: 'Lionel Messi',
         avatar: 'svg-2',
         image : 'messi.jpg',
+        team : "Barcelona",
       tasks : [
             {
             name: 'Task 4',
@@ -72,6 +74,7 @@
         name: 'Ronaldo',
         avatar: 'svg-3',
         image : 'ronaldo.jpg',
+        team : "Real Madrid",
         tasks : [
             {
             name: 'Task 3',
@@ -99,6 +102,7 @@
         name: 'Paul Pogba',
         avatar: 'svg-4',
         image : 'pogba.jpg',
+        team : "Juventus",
         tasks : [
             {
             name: 'Task 4',
@@ -126,6 +130,7 @@
         name: 'Anthony Martial',
         avatar: 'svg-5',
         image : 'martial.jpg',
+        team : "Machester United",
         tasks : [
             {
             name: 'Task 6',
@@ -152,6 +157,7 @@
       {
         name: 'Wayne Rooney',
         image : 'rooney.jpg',
+        team : "Machester United",
         avatar: 'svg-6',
         tasks : [
             {

@@ -54,17 +54,19 @@
       <md-button id="main" class="menu" hide-gt-sm ng-click="ctrl.toggleList()" aria-label="Show User List">
         <md-icon md-svg-icon="menu" ></md-icon>
       </md-button>
-      <h3 style="font-family:monospace;">Task List</h3>
+      <h3 style="font-family:monospace;">Today's Tasks</h3>
     </md-toolbar>
 
     <md-content flex id="content">
         <div flex ng-cloak layout layout-wrap >
-             <md-card ng-repeat="task in ctrl.tasks" flex="30" class="fade">
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline" style="    font-family: Raleway;
-    font-weight: bold;">{{task.name}}</span>
-                        <span class="md-subhead">{{task.text}}</span>
+             <md-card ng-click="ctrl.showTaskDetails($event,task)" ng-repeat="task in ctrl.tasks" flex="30" class="fade" ng-class="{type1:task.type==1,type2:task.type==2,type3:task.type==3,type4:task.type==4}">
+                <md-card-title >
+                    <md-card-title-text >
+                        <span  class="md-headline task-head ">
+                            <span ng-class="{'fa fa-sun-o':task.type==1,'fa fa-child':task.type==2,'fa fa-futbol-o':task.type==3,'fa fa-bicycle':task.type==4}" class="task-icon"></span>
+                        
+                            {{task.name}}</span>
+                        <span class="md-subhead task-text">{{task.text}}</span>
                     </md-card-title-text>
                     <md-card-title-media layout="row" layout-align="center center">
                         <div class="fa fa-check check-icon" aria-hidden="true"  ng-click="ctrl.openFromLeft( task)"></div>
@@ -84,6 +86,7 @@
 
     <script src="./src/checkList/CheckList.js"></script>
     <script src="./src/checklist/CheckListController.js"></script>
+    <script src="./src/checklist/TaskDetailsController.js"></script>
     <script src="./src/checklist/DataService.js"></script>
 
     <script type="text/javascript">

@@ -1,0 +1,39 @@
+<md-dialog aria-label="Task Details"  ng-cloak style="min-width:500px;max-width:800px">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Task Details</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2>
+                 <span ng-class="{'fa fa-sun-o':task.type==1,'fa fa-child':task.type==2,'fa fa-futbol-o':task.type==3,'fa fa-bicycle':task.type==4}" class="task-icon"></span>
+                        
+            {{task.name}}</h2>
+        <p>
+         {{task.text}}
+        </p>
+        <!--<img style="margin: auto; max-width: 100%;" alt="Lush mango tree" src="img/mangues.jpg">-->
+        <h3>Details:</h3>
+        <p>
+         {{task.content}}
+        </p>
+        <p>
+          The highest concentration of Mangifera genus is in the western part of Malesia (Sumatra, Java and Borneo) and in Burma and India. While other Mangifera species (e.g. horse mango, M. foetida) are also grown on a more localized basis, Mangifera indica&mdash;the "common mango" or "Indian mango"&mdash;is the only mango tree commonly cultivated in many tropical and subtropical regions.
+        </p>
+     
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()" style="margin-right:20px;">
+        Close
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

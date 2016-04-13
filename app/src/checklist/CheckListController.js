@@ -79,6 +79,34 @@
                 .hideDelay(3000)
             );
     }
+    self.showTaskDetails = function(ev,task) {
+    $mdDialog.show({
+      controller: function TaskDetailsController($scope, $mdDialog) {
+            $scope.task = task;
+            $scope.hide = function() {
+                $mdDialog.hide();
+            };
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+            $scope.answer = function(answer) {
+                $mdDialog.hide(answer);
+            };
+        },
+      templateUrl: './src/checklist/view/taskDetails.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: true
+    })
+    .then(function(answer) {
+      self.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      self.status = 'You cancelled the dialog.';
+    });
+  };
+  
   }
+   
 
 })();

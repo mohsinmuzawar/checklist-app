@@ -30,6 +30,7 @@ md-icon.avatar {
 
  .selected {
     color: #03a9f4;
+    background-color: #ddd; 
   }
 
 

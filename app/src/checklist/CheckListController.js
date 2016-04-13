@@ -27,7 +27,8 @@
     self.openFromLeft = openFromLeft;
     self.myStyle = {};
     // Load all registered tasks--
-
+    self.setUserTasks = setUserTasks;
+    self.selectAll = selectAll;
     dataService
           .loadAllTasks()
           .then( function( tasks ) {
@@ -39,7 +40,14 @@
         self.users = [].concat(users);
         self.selectedUser = users[0];
     });
-
+    function selectAll() {
+       dataService
+          .loadAllTasks()
+          .then( function( tasks ) {
+            self.tasks    = [].concat(tasks);
+            self.selectedTask = tasks[0];
+          });
+    }
     // *********************************
     // Internal methods
     // *********************************
@@ -50,7 +58,7 @@
     function toggleTasksList() {
       $mdSidenav('left').toggle();
     }
-
+    
     /**
      * Select the current avatars
      * @param menuId
@@ -69,7 +77,6 @@
     function openFromLeft(task) {
         task.isCompleted = true;
         var index = self.tasks.indexOf(task);
-        console.log(self.tasks);
         self.myStyle={'background-color':'green'};
         var x =self.tasks.splice(index, 1); 
         $mdToast.show(
@@ -78,6 +85,11 @@
                 .position("bottom right" )
                 .hideDelay(3000)
             );
+    }
+    
+    function  setUserTasks(tasks) {
+        console.log(tasks);
+        self.tasks = tasks;
     }
     self.showTaskDetails = function(ev,task) {
     $mdDialog.show({

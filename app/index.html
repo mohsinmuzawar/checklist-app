@@ -37,8 +37,15 @@
     </md-toolbar>
 
     <md-list>
-      <md-list-item ng-repeat="user in ctrl.users">
-          <md-button ng-click="ctrl.selectUser(userit)" ng-class="{'selected' : user === ctrl.selected }">
+        <md-list-item ng-click="ctrl.selectAll()">
+        
+           <md-button ng-class="{'selected' : user === ctrl.selectedUser }">
+           Show All
+          </md-button>
+        
+      </md-list-item>
+      <md-list-item ng-repeat="user in ctrl.users" ng-click="ctrl.setUserTasks(user.tasks)">
+          <md-button ng-click="ctrl.selectUser(user)" ng-class="{'selected' : user === ctrl.selectedUser }">
             <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
             {{user.name}}
           </md-button>
@@ -60,7 +67,7 @@
     <md-content flex id="content">
         <div flex ng-cloak layout layout-wrap >
              <md-card ng-click="ctrl.showTaskDetails($event,task)" ng-repeat="task in ctrl.tasks" flex="30" class="fade" ng-class="{type1:task.type==1,type2:task.type==2,type3:task.type==3,type4:task.type==4}">
-                <md-card-title >
+                <md-card-title style="padding-left: 2rem;padding-right: 2rem;" >
                     <md-card-title-text >
                         <span  class="md-headline task-head ">
                             <span ng-class="{'fa fa-sun-o':task.type==1,'fa fa-child':task.type==2,'fa fa-futbol-o':task.type==3,'fa fa-bicycle':task.type==4}" class="task-icon"></span>
@@ -86,7 +93,6 @@
 
     <script src="./src/checkList/CheckList.js"></script>
     <script src="./src/checklist/CheckListController.js"></script>
-    <script src="./src/checklist/TaskDetailsController.js"></script>
     <script src="./src/checklist/DataService.js"></script>
 
     <script type="text/javascript">

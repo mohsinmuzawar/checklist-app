@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
     <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../app/angular-chart.css"/>
     <link rel="stylesheet" href="assets/app.css"/>
 
     <style type="text/css">
@@ -44,8 +45,8 @@
           </md-button>
         
       </md-list-item>
-      <md-list-item ng-repeat="user in ctrl.users" ng-click="ctrl.setUserTasks(user.tasks)">
-          <md-button ng-click="ctrl.selectUser(user)" ng-class="{'selected' : user === ctrl.selectedUser }">
+      <md-list-item ng-repeat="user in ctrl.users" ng-click="ctrl.setUserTasks(user.tasks);ctrl.selectUser(user)">
+          <md-button ng-class="{'selected' : user === ctrl.selectedUser }">
             <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
             {{user.name}}
           </md-button>
@@ -65,6 +66,17 @@
     </md-toolbar>
 
     <md-content flex id="content">
+        <div layout style="padding-bottom:1rem;padding-top:1rem;">
+            <span flex></span>
+            <span flex="10" ng-show="ctrl.showChartIcon" ng-click="ctrl.showUserStats($event)" >   
+                <span layout="column" layout-align="center center">
+                <md-tooltip md-direction="bottom">
+                    Show User Stats
+                </md-tooltip>
+                <i class="fa fa-bar-chart" style="font-size: 2rem;" ></i>
+                </span>
+            </span>
+        </div>
         <div flex ng-cloak layout layout-wrap >
              <md-card ng-click="ctrl.showTaskDetails($event,task)" ng-repeat="task in ctrl.tasks" flex="30" class="fade" ng-class="{type1:task.type==1,type2:task.type==2,type3:task.type==3,type4:task.type==4}">
                 <md-card-title style="padding-left: 2rem;padding-right: 2rem;" >
@@ -90,6 +102,8 @@
     <script src="../node_modules/angular-animate/angular-animate.js"></script>
     <script src="../node_modules/angular-aria/angular-aria.js"></script>
     <script type="text/javascript" src="../node_modules/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="../app/Chart.js"></script>
+    <script type="text/javascript" src="../app/angular-chart.js"></script>
 
     <script src="./src/checkList/CheckList.js"></script>
     <script src="./src/checklist/CheckListController.js"></script>

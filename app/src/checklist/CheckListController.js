@@ -25,7 +25,9 @@
     self.selectUser   = selectUser;
     self.toggleList   = toggleTasksList;
     self.openFromLeft = openFromLeft;
-    
+    self.showChartIcon = false;
+    self.showUserStats = showUserStats;
+    self.displayChart = false;
     self.myStyle = {};
     // Load all registered tasks--
     self.setUserTasks = setUserTasks;
@@ -43,6 +45,7 @@
     });
     function selectAll() {
       
+    self.showChartIcon = false;
             self.tasks    = self.Alltasks;
           }
     // *********************************
@@ -64,7 +67,8 @@
       self.selectedTask = angular.isNumber(task) ? $scope.tasks[task] : task;
     }
     function selectUser ( user ) {
-      self.selectedUser = angular.isNumber(user) ? $scope.tasks[user] : user;
+        self.displayChart = false;
+        self.selectedUser = angular.isNumber(user) ? $scope.tasks[user] : user;
     }
 
     /**
@@ -85,21 +89,35 @@
     }
     
     function  setUserTasks(tasks) {
-        console.log(tasks);
+        
+        self.showChartIcon = true;
         self.tasks = tasks;
+    }
+    function showUserStats(ev) {
+        $mdDialog.show({
+      controller: function ChartController($scope, $mdDialog) {
+            $scope.user = self.selectedUser;
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+            $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+            $scope.data = [300, 500, 100];
+        },
+      templateUrl: './src/checklist/view/chartData.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: true
+    });
+        self.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+        self.data = [300, 500, 100];
     }
     self.showTaskDetails = function(ev,task) {
     $mdDialog.show({
       controller: function TaskDetailsController($scope, $mdDialog) {
             $scope.task = task;
-            $scope.hide = function() {
-                $mdDialog.hide();
-            };
             $scope.cancel = function() {
                 $mdDialog.cancel();
-            };
-            $scope.answer = function(answer) {
-                $mdDialog.hide(answer);
             };
         },
       templateUrl: './src/checklist/view/taskDetails.html',
@@ -107,11 +125,6 @@
       targetEvent: ev,
       clickOutsideToClose:true,
       fullscreen: true
-    })
-    .then(function(answer) {
-      self.status = 'You said the information was "' + answer + '".';
-    }, function() {
-      self.status = 'You cancelled the dialog.';
     });
   };
   

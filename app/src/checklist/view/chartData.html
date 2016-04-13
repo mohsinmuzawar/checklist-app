@@ -1,0 +1,23 @@
+
+
+<md-dialog aria-label="User Stats"  ng-cloak>
+   
+    <md-dialog-content>
+      <div class="md-dialog-content">
+       <div>
+           <h1 style="font-family:monospace;">User Details</h1>
+       </div>
+        <canvas id="pie" class="chart chart-pie"
+  chart-data="data" chart-labels="labels">
+</canvas> 
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+     
+      <span flex></span>
+     
+      <md-button ng-click="cancel()" style="margin-right:20px;">
+        close
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

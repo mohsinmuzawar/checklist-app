@@ -38,19 +38,27 @@
     </md-toolbar>
 
     <md-list>
-        <md-list-item ng-click="ctrl.selectAll()">
+        <!--<md-list-item ng-click="ctrl.selectAll()">
         
            <md-button ng-class="{'selected' : user === ctrl.selectedUser }">
            Show All
           </md-button>
         
-      </md-list-item>
-      <md-list-item ng-repeat="user in ctrl.users" ng-click="ctrl.setUserTasks(user.tasks);ctrl.selectUser(user)">
-          <md-button ng-class="{'selected' : user === ctrl.selectedUser }">
+      </md-list-item>-->
+      <!--<md-list-item ng-repeat="user in ctrl.users" ng-click="ctrl.setUserTasks(user.tasks);ctrl.selectUser(user)" >
+          <md-button >
             <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
-            {{user.name}}
+            <span flex="100">{{user.name}}</span>
           </md-button>
-      </md-list-item>
+      </md-list-item>-->
+      <md-list-item ng-repeat="user in ctrl.users" ng-click="ctrl.setUserTasks(user.tasks);ctrl.selectUser(user)" class="noright">
+        <span flex="30"><img src="./assets/images/{{user.image}}" class=" avatar"/></span>
+        
+        <p flex="60">{{ user.name }}</p>
+        <span flex="10" ng-click="ctrl.userDetails($event,user)">
+            <md-icon class="userInfo-icon" aria-label="info" md-font-icon="fa fa-info" ></md-icon>
+        </span>
+    </md-list-item>
     </md-list>
 
   </md-sidenav>
@@ -68,14 +76,23 @@
     <md-content flex id="content">
         <div layout style="padding-bottom:1rem;padding-top:1rem;">
             <span flex></span>
-            <span flex="10" ng-show="ctrl.showChartIcon" ng-click="ctrl.showUserStats($event)" >   
+            <span flex="5" ng-click="ctrl.addNewTask($event)" >   
+                <span layout="column" layout-align="center center">
+                <md-tooltip md-direction="bottom">
+                    Add New Task
+                </md-tooltip>
+                <i class="fa fa-plus" style="font-size: 2rem; color: #673AB7;" ></i>
+                </span>
+            </span>
+            <span flex="5" ng-click="ctrl.showUserStats($event)" >   
                 <span layout="column" layout-align="center center">
                 <md-tooltip md-direction="bottom">
                     Show User Stats
                 </md-tooltip>
-                <i class="fa fa-bar-chart" style="font-size: 2rem;" ></i>
+                <i class="fa fa-bar-chart" style="font-size: 2rem; color: #673AB7;" ></i>
                 </span>
             </span>
+           
         </div>
         <div flex ng-cloak layout layout-wrap >
              <md-card ng-click="ctrl.showTaskDetails($event,task)" ng-repeat="task in ctrl.tasks" flex="30" class="fade" ng-class="{type1:task.type==1,type2:task.type==2,type3:task.type==3,type4:task.type==4}">
@@ -108,29 +125,8 @@
     <script src="./src/checkList/CheckList.js"></script>
     <script src="./src/checklist/CheckListController.js"></script>
     <script src="./src/checklist/DataService.js"></script>
+    <script src="./src/app.js"></script>
 
-    <script type="text/javascript">
-
-          angular
-              .module('checklistApp', ['ngMaterial', 'checklist'])
-              .config(function($mdThemingProvider, $mdIconProvider){
-
-                  $mdIconProvider
-                      .defaultIconSet("./assets/svg/avatars.svg", 128)
-                      .icon("menu"       , "./assets/svg/menu.svg"        , 24)
-                      .icon("share"      , "./assets/svg/share.svg"       , 24)
-                      .icon("google_plus", "./assets/svg/google_plus.svg" , 512)
-                      .icon("hangouts"   , "./assets/svg/hangouts.svg"    , 512)
-                      .icon("twitter"    , "./assets/svg/twitter.svg"     , 512)
-                      .icon("phone"      , "./assets/svg/phone.svg"       , 512);
-
-                      $mdThemingProvider.theme('default')
-                          .primaryPalette('deep-purple')
-                          .accentPalette('amber');
-
-              });
-
-    </script>
 
   </body>
 </html>

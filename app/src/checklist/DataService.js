@@ -17,6 +17,7 @@
       {
         name: 'George Best',
         avatar: 'svg-1',
+        image : 'best.jpg',
        tasks : [
             {
             name: 'Task 1',
@@ -43,6 +44,7 @@
       {
         name: 'Lionel Messi',
         avatar: 'svg-2',
+        image : 'messi.jpg',
       tasks : [
             {
             name: 'Task 4',
@@ -69,6 +71,7 @@
       {
         name: 'Ronaldo',
         avatar: 'svg-3',
+        image : 'ronaldo.jpg',
         tasks : [
             {
             name: 'Task 3',
@@ -95,6 +98,7 @@
       {
         name: 'Paul Pogba',
         avatar: 'svg-4',
+        image : 'pogba.jpg',
         tasks : [
             {
             name: 'Task 4',
@@ -121,6 +125,7 @@
       {
         name: 'Anthony Martial',
         avatar: 'svg-5',
+        image : 'martial.jpg',
         tasks : [
             {
             name: 'Task 6',
@@ -146,6 +151,7 @@
       },
       {
         name: 'Wayne Rooney',
+        image : 'rooney.jpg',
         avatar: 'svg-6',
         tasks : [
             {

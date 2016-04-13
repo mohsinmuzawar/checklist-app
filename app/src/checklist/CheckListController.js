@@ -16,7 +16,6 @@
    */
   function CheckListController( dataService, $mdSidenav, $mdBottomSheet, $log,$q ,$mdDialog,$mdToast) {
     var self = this;
-
     self.selectedTask     = null;
     self.selectedUser     = null;
     self.tasks        = [];
@@ -25,29 +24,24 @@
     self.selectUser   = selectUser;
     self.toggleList   = toggleTasksList;
     self.openFromLeft = openFromLeft;
-    self.showChartIcon = false;
     self.showUserStats = showUserStats;
-    self.displayChart = false;
+    self.showTaskDetails = showTaskDetails;
+    self.addNewTask = addNewTask;
+    self.userDetails = userDetails;
     self.myStyle = {};
     // Load all registered tasks--
     self.setUserTasks = setUserTasks;
-    self.selectAll = selectAll;
-    dataService
-          .loadAllTasks()
-          .then( function( tasks ) {
-            self.Alltasks    = [].concat(tasks);
-            self.tasks = self.Alltasks;
-          });
+    // dataService
+    //       .loadAllTasks()
+    //       .then( function( tasks ) {
+    //         self.Alltasks    = [].concat(tasks);
+    //       });
     
     dataService.loadAllUsers().then(function(users) {
         self.users = [].concat(users);
         self.selectedUser = users[0];
+        self.tasks = users[0].tasks;
     });
-    function selectAll() {
-      
-    self.showChartIcon = false;
-            self.tasks    = self.Alltasks;
-          }
     // *********************************
     // Internal methods
     // *********************************
@@ -67,7 +61,6 @@
       self.selectedTask = angular.isNumber(task) ? $scope.tasks[task] : task;
     }
     function selectUser ( user ) {
-        self.displayChart = false;
         self.selectedUser = angular.isNumber(user) ? $scope.tasks[user] : user;
     }
 
@@ -90,12 +83,11 @@
     
     function  setUserTasks(tasks) {
         
-        self.showChartIcon = true;
         self.tasks = tasks;
     }
     function showUserStats(ev) {
         $mdDialog.show({
-      controller: function ChartController($scope, $mdDialog) {
+      controller: function ($scope, $mdDialog) {
             $scope.user = self.selectedUser;
             $scope.cancel = function() {
                 $mdDialog.cancel();
@@ -112,21 +104,63 @@
         self.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
         self.data = [300, 500, 100];
     }
-    self.showTaskDetails = function(ev,task) {
-    $mdDialog.show({
-      controller: function TaskDetailsController($scope, $mdDialog) {
-            $scope.task = task;
-            $scope.cancel = function() {
-                $mdDialog.cancel();
-            };
-        },
-      templateUrl: './src/checklist/view/taskDetails.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true,
-      fullscreen: true
-    });
-  };
+    function showTaskDetails(ev,task) {
+        $mdDialog.show({
+        controller: function ($scope, $mdDialog) {
+                $scope.task = task;
+                $scope.cancel = function() {
+                    $mdDialog.cancel();
+                };
+            },
+        templateUrl: './src/checklist/view/taskDetails.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: true
+        });
+    } 
+    function addNewTask(ev) {
+        $mdDialog.show({
+        controller: function ($scope, $mdDialog) {
+              $scope.taskTypes = [
+                {id: 1,name: "Type1"},
+                {id: 2,name: "Type2"},
+                {id: 3,name: "Type3"},
+                {id: 4,name: "Type4"}];
+                $scope.cancel = function() {
+                    $mdDialog.cancel();
+                };
+                $scope.save = function(task){
+                    self.selectedUser.tasks.push(task);
+                    $mdDialog.hide();
+                };
+            },
+        templateUrl: './src/checklist/view/addTask.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: true
+        });
+    } 
+     function userDetails(ev,user) {
+        $mdDialog.show({
+        controller: function ($scope, $mdDialog) {
+                $scope.user = user;
+                $scope.cancel = function() {
+                    $mdDialog.cancel();
+                };
+                $scope.save = function(task){
+                    self.selectedUser.tasks.push(task);
+                    $mdDialog.hide();
+                };
+            },
+        templateUrl: './src/checklist/view/userDetails.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: true
+        });
+    } 
   
   }
    

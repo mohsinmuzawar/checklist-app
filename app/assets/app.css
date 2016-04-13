@@ -92,11 +92,11 @@ md-list-item {
   position:relative;
   width: 54px;
   height: 54px;
-  border: 1px solid #ddd;
+  box-shadow: 1px 1px 1px 1px #ddd;
   border-radius: 50%;
   display: inline-block;
   overflow: hidden;
-  margin: 0px;
+  margin: .3rem;
   vertical-align: middle;
 
 }
@@ -158,4 +158,8 @@ span.name {
 }
 .task-icon{
     font-size: 2rem;
+}
+.userInfo-icon{
+    font-size:1.5rem;
+    color: #757573;
 }

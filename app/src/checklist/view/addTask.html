@@ -1,0 +1,47 @@
+<md-dialog aria-label="Add New Task"  ng-cloak style="min-width:500px;max-width800px;">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add New Task</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-font-icon="fa fa-times" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2>Enter Task Details</h2>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Title</label>
+            <input ng-model="task.name">
+          </md-input-container>
+           <md-input-container class="md-block" flex-gt-sm>
+            <label>Short Description</label>
+            <input ng-model="task.text">
+          </md-input-container>
+        <md-input-container class="md-block">
+          <label>Details</label>
+          <textarea ng-model="task.content" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+             <md-select ng-model="task.type">
+              <md-option ng-repeat="type in taskTypes" value="{{type.id}}">
+                {{type.name}}
+              </md-option>
+            </md-select>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+    
+      <span flex></span>
+      <md-button ng-click="save(task)">
+       Save
+      </md-button>
+      <md-button ng-click="cancel()" style="margin-right:20px;">
+        Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

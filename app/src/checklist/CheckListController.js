@@ -19,12 +19,13 @@
 
     self.selectedTask     = null;
     self.selectedUser     = null;
-    self.tasks        = [ ];
+    self.tasks        = [];
     self.users        = [ ];
     self.selectTask   = selectTask;
     self.selectUser   = selectUser;
     self.toggleList   = toggleTasksList;
     self.openFromLeft = openFromLeft;
+    
     self.myStyle = {};
     // Load all registered tasks--
     self.setUserTasks = setUserTasks;
@@ -32,8 +33,8 @@
     dataService
           .loadAllTasks()
           .then( function( tasks ) {
-            self.tasks    = [].concat(tasks);
-            self.selectedTask = tasks[0];
+            self.Alltasks    = [].concat(tasks);
+            self.tasks = self.Alltasks;
           });
     
     dataService.loadAllUsers().then(function(users) {
@@ -41,13 +42,9 @@
         self.selectedUser = users[0];
     });
     function selectAll() {
-       dataService
-          .loadAllTasks()
-          .then( function( tasks ) {
-            self.tasks    = [].concat(tasks);
-            self.selectedTask = tasks[0];
-          });
-    }
+      
+            self.tasks    = self.Alltasks;
+          }
     // *********************************
     // Internal methods
     // *********************************

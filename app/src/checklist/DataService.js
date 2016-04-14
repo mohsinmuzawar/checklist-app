@@ -99,10 +99,10 @@
         }]
       },
       {
-        name: 'Paul Pogba',
+        name: 'David Beckham',
         avatar: 'svg-4',
-        image : 'pogba.jpg',
-        team : "Juventus",
+        image : 'beckham.jpg',
+        team : "Paris Saint-Germain",
         tasks : [
             {
             name: 'Task 4',
@@ -127,10 +127,10 @@
         }]
       },
       {
-        name: 'Anthony Martial',
+        name: 'Zlatan',
         avatar: 'svg-5',
-        image : 'martial.jpg',
-        team : "Machester United",
+        image : 'ibra.jpg',
+        team : "Paris Saint-Germain",
         tasks : [
             {
             name: 'Task 6',

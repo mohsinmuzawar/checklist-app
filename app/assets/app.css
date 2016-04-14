@@ -152,6 +152,7 @@ span.name {
     font-family: Raleway;
     font-weight: bold;
     color: white;
+    text-transform: capitalize;
 }
 .task-text{
     font-weight: bold;

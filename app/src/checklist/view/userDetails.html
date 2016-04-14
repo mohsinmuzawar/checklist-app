@@ -5,35 +5,44 @@
   display: block;
   filter: blur(5px);
   -webkit-filter: blur(5px);
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   z-index: 1;
-}    
+}
+.user-name{
+      color: white;
+    font-size: 2rem;
+    font-family: fantasy;
+    border-bottom: 1px solid white;
+    padding-bottom: .5rem;
+}
+.team-name{
+     color: white;
+    font-family: Raleway;
+}  
+.about{
+  padding-top: 2rem;
+    color: #A28F8F;
+    width: 50%;
+}
 </style>
 
-<md-dialog aria-label="Task Details"  ng-cloak style="min-width:500px;max-width:700px;min-height:600px;">
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2 style="font-family:monospace;">User Details</h2>
-        <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
-          <md-icon md-font-icon="fa fa-times" aria-label="Close dialog"></md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
-    <md-dialog-content >
-      <div class="md-dialog-content" layout="column" style="z-index:2;">
-          <div  class="background-image" style="background-image:url('./assets/images/large/{{user.image}}');" >
-          </div>
-        <span class="md-headline">
-                      
-            {{user.name}}</span>
+<md-dialog aria-label="Task Details"  ng-cloak style="width:550px;height:350px;">
+    <md-dialog-content   class="md-dialog-content" layout="column" class="background-image" style="
+  height: 400px;background-image:url('./assets/images/large/{{user.image}}');" >
+      
+        <span class="md-headline user-name">{{user.name}}</span>
           
-        <span class="md-subheader">
+        <span class="team-name">
            {{user.team}}
          
         </span>
-      </div>
+        
+        
+          <span class="about" >  
+            {{user.info}}
+            
+          </span>
     </md-dialog-content>
 </md-dialog>

@@ -24,7 +24,10 @@
           <textarea ng-model="task.content" md-maxlength="150" rows="5" md-select-on-focus></textarea>
         </md-input-container>
         <md-input-container class="md-block" flex-gt-sm>
+          
+              <label>Select Type</label>
              <md-select ng-model="task.type">
+               
               <md-option ng-repeat="type in taskTypes" value="{{type.id}}">
                 {{type.name}}
               </md-option>

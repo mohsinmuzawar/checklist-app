@@ -90,15 +90,15 @@ md-list-item {
 /* Typography support coming in 0.8.0 */
 
 .avatar {
-  position:relative;
-  width: 54px;
-  height: 54px;
-  box-shadow: 1px 1px 1px 1px #ddd;
-  border-radius: 50%;
-  display: inline-block;
-  overflow: hidden;
-  margin: .3rem;
-  vertical-align: middle;
+    position: relative;
+    width: 54px;
+    height: 54px;
+    box-shadow: 1px 1px 1px 1px #8E7964;
+    border-radius: 15%;
+    display: inline-block;
+    overflow: hidden;
+    margin: .3rem;
+    vertical-align: middle;
 
 }
 

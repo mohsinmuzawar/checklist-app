@@ -19,6 +19,9 @@
         avatar: 'svg-1',
         image : 'best.jpg',
         team : "Machester United",
+        chartData :  {
+            labels : ["Running", "Workout", "Football Practice","Other"],
+            data : [600, 300, 400,100]},
        tasks : [
             {
             name: 'Task 1',
@@ -47,6 +50,9 @@
         avatar: 'svg-2',
         image : 'messi.jpg',
         team : "Barcelona",
+        chartData :  {
+            labels : ["Running", "Workout", "Football Practice","Other"],
+            data : [600, 300, 400,100]},
       tasks : [
             {
             name: 'Task 4',
@@ -75,6 +81,9 @@
         avatar: 'svg-3',
         image : 'ronaldo.jpg',
         team : "Real Madrid",
+        chartData :  {
+            labels : ["Running", "Workout", "Football Practice","Other"],
+            data : [600, 300, 400,100]},
         tasks : [
             {
             name: 'Task 3',
@@ -103,6 +112,9 @@
         avatar: 'svg-4',
         image : 'beckham.jpg',
         team : "Paris Saint-Germain",
+        chartData :  {
+            labels : ["Running", "Workout", "Football Practice","Other"],
+            data : [600, 300, 400,100]},
         tasks : [
             {
             name: 'Task 4',
@@ -131,6 +143,9 @@
         avatar: 'svg-5',
         image : 'ibra.jpg',
         team : "Paris Saint-Germain",
+        chartData :  {
+            labels : ["Running", "Workout", "Football Practice","Other"],
+            data : [600, 300, 400,100]},
         tasks : [
             {
             name: 'Task 6',
@@ -159,6 +174,9 @@
         image : 'rooney.jpg',
         team : "Machester United",
         avatar: 'svg-6',
+        chartData :  {
+            labels : ["Running", "Workout", "Football Practice","Other"],
+            data : [600, 300, 400,100]},
         tasks : [
             {
             name: 'Task 6',

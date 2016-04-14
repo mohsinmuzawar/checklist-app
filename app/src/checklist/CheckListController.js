@@ -92,8 +92,8 @@
             $scope.cancel = function() {
                 $mdDialog.cancel();
             };
-            $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-            $scope.data = [300, 500, 100];
+            $scope.labels = self.selectedUser.chartData.labels;
+            $scope.data = self.selectedUser.chartData.data;
         },
       templateUrl: './src/checklist/view/chartData.html',
       parent: angular.element(document.body),
@@ -101,8 +101,6 @@
       clickOutsideToClose:true,
       fullscreen: true
     });
-        self.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-        self.data = [300, 500, 100];
     }
     function showTaskDetails(ev,task) {
         $mdDialog.show({

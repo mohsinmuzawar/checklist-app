@@ -94,7 +94,7 @@ md-list-item {
     width: 54px;
     height: 54px;
     box-shadow: 1px 1px 1px 1px #8E7964;
-    border-radius: 15%;
+    border-radius: 50%;
     display: inline-block;
     overflow: hidden;
     margin: .3rem;
